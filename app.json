@@ -26,6 +26,42 @@
     "plugins": [
       "expo-router",
       [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Monstserrat-Regular.ttf"],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Monstserrat",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Monstserrat-Regular.ttf",
+                    "weight": "normal",
+                    "style": "normal",
+                    "fontFamily": "Monstserrat-Regular"
+                  },
+                  {
+                    "path": "./assets/fonts/Monstserrat-Bold.ttf",
+                    "weight": "bold",
+                    "style": "normal",
+                    "fontFamily": "Monstserrat-Bold"
+                  },
+                  {
+                    "path": "./assets/fonts/Monstserrat-semibold.ttf",
+                    "weight": "700",
+                    "style": "normal",
+                    "fontFamily": "Monstserrat-Semibold"
+                  }
+                ]
+              }
+            ]
+          },
+          "ios": {
+            "fonts": ["./assets/fonts/Monstserrat-Regular.ttf"]
+          }
+        }
+      ],
+      [
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-icon.png",
