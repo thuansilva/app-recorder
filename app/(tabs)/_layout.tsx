@@ -13,7 +13,8 @@ function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.light.tint,
+        tabBarActiveTintColor: Colors.light.tabIconSelected,
+        tabBarInactiveTintColor: "gray",
         tabBarLabelStyle: {
           fontFamily: Fonts.mon.semiBold,
           fontSize: 12,
@@ -25,7 +26,7 @@ function TabLayout() {
         options={{
           tabBarLabel: "Explore",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" color={Colors.dark.icon} size={24} />
+            <Ionicons name="search" color={color} size={24} />
           ),
         }}
       />
@@ -35,7 +36,7 @@ function TabLayout() {
         options={{
           tabBarLabel: "Whislist",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="heart-outline" color={Colors.dark.icon} size={24} />
+            <Ionicons name="heart-outline" color={color} size={24} />
           ),
         }}
       />
@@ -44,7 +45,7 @@ function TabLayout() {
         options={{
           tabBarLabel: "Trips",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="airbnb" color={Colors.dark.icon} size={24} />
+            <FontAwesome5 name="airbnb" color={color} size={24} />
           ),
         }}
       />
@@ -56,7 +57,7 @@ function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="message-outline"
-              color={Colors.dark.icon}
+              color={color}
               size={24}
             />
           ),
@@ -68,11 +69,7 @@ function TabLayout() {
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="person-circle-outline"
-              color={Colors.dark.icon}
-              size={24}
-            />
+            <Ionicons name="person-circle-outline" color={color} size={24} />
           ),
         }}
       />

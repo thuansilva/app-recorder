@@ -1,13 +1,13 @@
-import { Fonts } from "@/constants/Fonts";
+import { Link } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 function Page() {
   return (
     <View>
-      <Text style={{ fontFamily: Fonts.mon.regular }}>
-        Fira Sans Medium Italic
-      </Text>
+      <Link href="/(modals)/login">Login</Link>
+      <Link href="/(modals)/booking">Booking</Link>
+      <Link href="/listing/137">Listing</Link>
     </View>
   );
 }
