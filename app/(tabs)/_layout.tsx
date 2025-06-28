@@ -1,45 +1,82 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from "expo-router";
+import React from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { Colors } from "@/constants/Colors";
+import { Fonts } from "@/constants/Fonts";
+import {
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarActiveTintColor: Colors.light.tint,
+        tabBarLabelStyle: {
+          fontFamily: Fonts.mon.semiBold,
+          fontSize: 12,
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarLabel: "Explore",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="search" color={Colors.dark.icon} size={24} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="whishlist"
+        options={{
+          tabBarLabel: "Whislist",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart-outline" color={Colors.dark.icon} size={24} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="trips"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarLabel: "Trips",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="airbnb" color={Colors.dark.icon} size={24} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="inbox"
+        options={{
+          tabBarLabel: "Inbox",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="message-outline"
+              color={Colors.dark.icon}
+              size={24}
+            />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="person-circle-outline"
+              color={Colors.dark.icon}
+              size={24}
+            />
+          ),
         }}
       />
     </Tabs>
   );
 }
+export default TabLayout;

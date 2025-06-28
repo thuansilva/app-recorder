@@ -1,15 +1,15 @@
-import { Fonts } from "@/constants/Fonts";
 import React from "react";
 import { Text, View } from "react-native";
 
-function Page() {
+function Inbox() {
   return (
     <View>
-      <Text style={{ fontFamily: Fonts.mon.regular }}>
+      {/* <Text>Tab Page</Text> */}
+      <Text style={{ fontFamily: "Monstserrat-Regular" }}>
         Fira Sans Medium Italic
       </Text>
     </View>
   );
 }
 
-export default Page;
+export default Inbox;
