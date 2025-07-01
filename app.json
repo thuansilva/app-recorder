@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "recorder-app",
-    "slug": "recorder-app",
+    "slug": "airbnb-clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -28,7 +28,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Monstserrat-Regular.ttf"],
+          "fonts": [
+            "./assets/fonts/Monstserrat-Regular.ttf"
+          ],
           "android": {
             "fonts": [
               {
@@ -57,7 +59,9 @@
             ]
           },
           "ios": {
-            "fonts": ["./assets/fonts/Monstserrat-Regular.ttf"]
+            "fonts": [
+              "./assets/fonts/Monstserrat-Regular.ttf"
+            ]
           }
         }
       ],
@@ -73,6 +77,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "28f222f5-5dc8-4915-b08f-8f36e95f53ab"
+      }
+    },
+    "owner": "annathais"
   }
 }
