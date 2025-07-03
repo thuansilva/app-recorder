@@ -4,28 +4,61 @@ import React, { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 
 import { Fonts } from "@/constants/Fonts";
+import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
+import { shouldRedirectToLogin } from "./entities/shouldRedirectToLogin";
+import { SecureTokenStorage } from "./entities/TokenStorageInfra";
+import { UseCaseTokenStorage } from "./entities/UseCaseTokenStorage";
 
 SplashScreen.preventAutoHideAsync();
 
+const EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY =
+  process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
 export default function TabLayout() {
-  const router = useRouter();
   const [loaded, error] = useFonts({
     [Fonts.mon.bold]: require("../assets/fonts/Montserrat-Bold.ttf"),
     [Fonts.mon.regular]: require("../assets/fonts/Montserrat-Regular.ttf"),
     [Fonts.mon.semiBold]: require("../assets/fonts/Montserrat-SemiBold.ttf"),
   });
 
+  const secureToken = new SecureTokenStorage();
+  const useCaseTokenStorage = new UseCaseTokenStorage(secureToken);
+
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [loaded, error]);
 
   if (!loaded && !error) {
     return null;
   }
+
+  return (
+    <ClerkProvider
+      publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
+      tokenCache={{
+        getToken: (key) => useCaseTokenStorage.getToken(key),
+        saveToken: (key, value) => useCaseTokenStorage.saveToken(key, value),
+      }}
+    >
+      <RootLayoutNav />
+    </ClerkProvider>
+  );
+}
+
+function RootLayoutNav() {
+  const router = useRouter();
+  const { isLoaded, isSignedIn } = useAuth();
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    if (shouldRedirectToLogin(isLoaded, isSignedIn)) {
+      router.push("/(modals)/login");
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   return (
     <Stack>
@@ -35,7 +68,7 @@ export default function TabLayout() {
         options={{
           title: "Login or sing up",
           headerTitleStyle: {
-            fontFamily: Fonts.mon.semiBold,
+            fontFamily: Fonts.mon.bold,
           },
 
           presentation: "modal",
