@@ -7,9 +7,9 @@ import { Fonts } from "@/constants/Fonts";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
-import { shouldRedirectToLogin } from "./entities/shouldRedirectToLogin";
-import { SecureTokenStorage } from "./entities/TokenStorageInfra";
-import { UseCaseTokenStorage } from "./entities/UseCaseTokenStorage";
+import { shouldRedirectToLogin } from "../entities/shouldRedirectToLogin";
+import { SecureTokenStorage } from "../entities/TokenStorageInfra";
+import { UseCaseTokenStorage } from "../entities/UseCaseTokenStorage";
 
 SplashScreen.preventAutoHideAsync();
 
