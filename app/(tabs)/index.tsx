@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 import React, { useMemo, useState } from "react";
 import { View } from "react-native";
 
-import ListingsBottomSheet from "@/components/ListingsBottomSheet";
+import Listings from "@/components/Listings";
 import listingsData from "../../assets/data/airbnb-listings.json";
 function Page() {
   const items = useMemo(() => listingsData as any, []);
@@ -23,7 +23,7 @@ function Page() {
       />
       {/* <Listing /> */}
       {/* <ListingsMap listings={getoItems} /> */}
-      <ListingsBottomSheet listings={items} category={category} />
+      <Listings listings={items} category={category} />
     </View>
   );
 }
