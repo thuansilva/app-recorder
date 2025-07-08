@@ -21,8 +21,6 @@ function Page() {
           header: () => <ExploreHeader onCategoryChanged={onDataChanged} />,
         }}
       />
-      {/* <Listing /> */}
-      {/* <ListingsMap listings={getoItems} /> */}
       <Listings listings={items} category={category} />
     </View>
   );
