@@ -19,7 +19,7 @@ interface Props {
   category: string;
 }
 
-function ListingsBottomSheet({ category, listings: items }: Props) {
+function Listings({ category, listings: items }: Props) {
   const [loading, setLoading] = React.useState<boolean>(true);
 
   const listRef = useRef<FlatList>(null);
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 });
-export default ListingsBottomSheet;
+export default Listings;

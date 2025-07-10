@@ -7,6 +7,7 @@ import { Fonts } from "@/constants/Fonts";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { shouldRedirectToLogin } from "../entities/shouldRedirectToLogin";
 import { SecureTokenStorage } from "../entities/TokenStorageInfra";
 import { UseCaseTokenStorage } from "../entities/UseCaseTokenStorage";
@@ -37,15 +38,17 @@ export default function TabLayout() {
   }
 
   return (
-    <ClerkProvider
-      publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
-      tokenCache={{
-        getToken: (key) => useCaseTokenStorage.getToken(key),
-        saveToken: (key, value) => useCaseTokenStorage.saveToken(key, value),
-      }}
-    >
-      <RootLayoutNav />
-    </ClerkProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ClerkProvider
+        publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
+        tokenCache={{
+          getToken: (key) => useCaseTokenStorage.getToken(key),
+          saveToken: (key, value) => useCaseTokenStorage.saveToken(key, value),
+        }}
+      >
+        <RootLayoutNav />
+      </ClerkProvider>
+    </GestureHandlerRootView>
   );
 }
 
