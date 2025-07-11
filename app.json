@@ -35,40 +35,36 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "./assets/fonts/Monstserrat-Regular.ttf"
-          ],
+          "fonts": ["./assets/fonts/Montserrat-Regular.ttf"],
           "android": {
             "fonts": [
               {
-                "fontFamily": "Monstserrat",
+                "fontFamily": "Montserrat",
                 "fontDefinitions": [
                   {
-                    "path": "./assets/fonts/Monstserrat-Regular.ttf",
-                    "weight": "normal",
+                    "path": "./assets/fonts/Montserrat-Regular.ttf",
+                    "weight": "400",
                     "style": "normal",
-                    "fontFamily": "Monstserrat-Regular"
+                    "fontFamily": "Montserrat-Regular"
                   },
                   {
-                    "path": "./assets/fonts/Monstserrat-Bold.ttf",
-                    "weight": "bold",
+                    "path": "./assets/fonts/Montserrat-Bold.ttf",
+                    "weight": "400",
                     "style": "normal",
-                    "fontFamily": "Monstserrat-Bold"
+                    "fontFamily": "Montserrat-Bold"
                   },
                   {
-                    "path": "./assets/fonts/Monstserrat-semibold.ttf",
+                    "path": "./assets/fonts/Montserrat-SemiBold.ttf",
                     "weight": "700",
                     "style": "normal",
-                    "fontFamily": "Monstserrat-Semibold"
+                    "fontFamily": "Monstserrat-SemiBold"
                   }
                 ]
               }
             ]
           },
           "ios": {
-            "fonts": [
-              "./assets/fonts/Monstserrat-Regular.ttf"
-            ]
+            "fonts": ["./assets/fonts/Montserrat-Regular.ttf"]
           }
         }
       ],
