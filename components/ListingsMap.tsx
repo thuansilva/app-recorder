@@ -1,5 +1,6 @@
+/* eslint-disable react/display-name */
 import { useRouter } from "expo-router";
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 
@@ -14,7 +15,7 @@ interface Props {
   listings: any;
 }
 
-function ListingsMap({ listings }: Props) {
+const ListingsMap = memo(({ listings }: Props) => {
   //   const { listings } = props;
   const ref = useRef(null);
   //   console.log("props", props.listings.features);
@@ -51,7 +52,7 @@ function ListingsMap({ listings }: Props) {
       </MapView>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,7 @@
 import { Fonts } from "@/constants/Fonts";
 import { defaultStyles } from "@/constants/Styles";
 import { Ionicons } from "@expo/vector-icons";
+import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import { Link } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import {
@@ -17,12 +18,23 @@ import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 interface Props {
   listings: any;
   category: string;
+  refresh: number;
 }
 
-function Listings({ category, listings: items }: Props) {
+function Listings({ category, listings: items, refresh }: Props) {
   const [loading, setLoading] = React.useState<boolean>(true);
 
   const listRef = useRef<FlatList>(null);
+
+  const scrollListTop = () => {
+    listRef.current?.scrollToOffset({ offset: 0, animated: true });
+  };
+
+  useEffect(() => {
+    if (refresh) {
+      scrollListTop();
+    }
+  }, [refresh]);
 
   useEffect(() => {
     setLoading(true);
@@ -72,13 +84,14 @@ function Listings({ category, listings: items }: Props) {
   );
 
   return (
-    <View style={defaultStyles.container}>
-      <FlatList
-        data={loading ? [] : items}
-        ref={listRef}
-        renderItem={renderRow}
-      />
-    </View>
+    // <View style={defaultStyles.container}>
+    <BottomSheetFlatList
+      data={loading ? [] : items}
+      // ref={listRef}
+      renderItem={renderRow}
+      style={defaultStyles.container}
+    />
+    // </View>
   );
 }
 

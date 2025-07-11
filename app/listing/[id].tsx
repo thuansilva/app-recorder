@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 26,
-    fontWeight: "bold",
+    fontWeight: 700,
     fontFamily: Fonts.mon.semiBold,
   },
   location: {

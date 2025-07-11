@@ -1,7 +1,9 @@
 import { Colors } from "@/constants/Colors";
+import { Fonts } from "@/constants/Fonts";
+import { Ionicons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useMemo, useRef, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Listings from "./Listings";
 
 interface Props {
@@ -10,7 +12,7 @@ interface Props {
 }
 
 const ListingsBottomSheet = ({ listings, category }: Props) => {
-  const snapPoints = useMemo(() => ["20%", "100%"], []);
+  const snapPoints = useMemo(() => ["10%", "100%"], []);
   const bottomSheetRef = useRef<BottomSheet>(null);
   const [refresh, setRefresh] = useState<number>(0);
 
@@ -25,14 +27,17 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
       index={1}
       snapPoints={snapPoints}
       enablePanDownToClose={false}
+      enableDynamicSizing={false}
       handleIndicatorStyle={{ backgroundColor: Colors.light.grey }}
-      style={styles.sheetContainer}
+      // style={styles.sheetContainer}
     >
       <View style={styles.contentContainer}>
-        <Listings listings={listings} category={category} />
-        {/* <View style={styles.absoluteView}> */}
-        {/* <TouchableOpacity onPress={onShowMap} style={styles.btn}>
-            <Text style={{ fontFamily: "mon-sb", color: "#fff" }}>Map</Text>
+        <Listings listings={listings} category={category} refresh={refresh} />
+        <View style={styles.absoluteView}>
+          <TouchableOpacity onPress={onShowMap} style={styles.btn}>
+            <Text style={{ fontFamily: Fonts.mon.semiBold, color: "#fff" }}>
+              Map
+            </Text>
             <Ionicons
               name="map"
               size={20}
@@ -40,7 +45,7 @@ const ListingsBottomSheet = ({ listings, category }: Props) => {
               color={"#fff"}
             />
           </TouchableOpacity>
-        </View> */}
+        </View>
       </View>
     </BottomSheet>
   );

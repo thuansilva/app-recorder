@@ -38,17 +38,17 @@ export default function TabLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <ClerkProvider
-        publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
-        tokenCache={{
-          getToken: (key) => useCaseTokenStorage.getToken(key),
-          saveToken: (key, value) => useCaseTokenStorage.saveToken(key, value),
-        }}
-      >
+    <ClerkProvider
+      publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
+      tokenCache={{
+        getToken: (key) => useCaseTokenStorage.getToken(key),
+        saveToken: (key, value) => useCaseTokenStorage.saveToken(key, value),
+      }}
+    >
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <RootLayoutNav />
-      </ClerkProvider>
-    </GestureHandlerRootView>
+      </GestureHandlerRootView>
+    </ClerkProvider>
   );
 }
 
